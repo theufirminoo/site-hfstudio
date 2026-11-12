@@ -1200,10 +1200,31 @@
       <section class="quiz-screen" data-screen="contato">
         <span class="label pink">Último passo</span>
         <h2 class="t-h2">Quase lá. Como eu te respondo?</h2>
+        <div class="quiz-pessoa" role="radiogroup" aria-label="Você é">
+          <label class="opt sm">
+            <input type="radio" name="tipo_pessoa" value="Pessoa física" checked="" data-pessoa-troca="">
+            <span class="opt-text">Pessoa física</span>
+          </label>
+          <label class="opt sm">
+            <input type="radio" name="tipo_pessoa" value="Pessoa jurídica" data-pessoa-troca="">
+            <span class="opt-text">Pessoa jurídica</span>
+          </label>
+        </div>
+
         <div class="quiz-fields">
-<div class="field">
+<div class="field" data-pessoa="Pessoa física">
   <label for="f-nome">Seu nome *</label>
   <input type="text" id="f-nome" name="nome" required="" autocomplete="name" placeholder="Nome e sobrenome">
+</div>
+
+<div class="field" data-pessoa="Pessoa jurídica">
+  <label for="f-responsavel">Nome do responsável *</label>
+  <input type="text" id="f-responsavel" name="responsavel" required="" autocomplete="name" placeholder="Quem responde pela empresa">
+</div>
+
+<div class="field" data-pessoa="Pessoa jurídica">
+  <label for="f-empresa">Nome da empresa *</label>
+  <input type="text" id="f-empresa" name="empresa" required="" autocomplete="organization" placeholder="Razão social ou nome fantasia">
 </div>
 
 <div class="field">
@@ -1255,7 +1276,7 @@
     <section class="quiz-screen quiz-done" data-screen="fim" id="quiz-done" hidden="">
       <span class="label pink">Recebido</span>
       <h2 class="t-h1">Briefing <em class="pink">enviado</em>.</h2>
-      <p class="lead">Obrigado! Já estamos lendo com calma. Respondemos em até 1 dia útil, no WhatsApp ou no e-mail que você deixou.</p>
+      <p class="lead">Recebemos os seus dados. É só aguardar que entramos em contato.</p>
       <div class="quiz-actions">
         <a class="btn" href="https://wa.me/5500000000000" target="_blank" rel="noopener noreferrer">Falar no WhatsApp</a>
         <a class="btn ghost" href="/site-hfstudio/portfolio/">Ver o portfólio</a>
