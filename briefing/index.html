@@ -221,12 +221,14 @@
         <fieldset class="quiz-fs">
           <legend class="quiz-legend">
             <span class="label pink" data-step-label=""></span>
-            <span class="t-h2">Onde vai acontecer?</span><span class="quiz-help">Se ainda não fechou o local, escreva a cidade e deixe o resto em branco.</span>
+            <span class="t-h2">Onde vai acontecer?</span><span class="quiz-help">Se ainda não fechou o local, escolha a cidade e deixe o resto em branco.</span>
           </legend>
           <div class="quiz-fields">
 <div class="field">
   <label for="f-cidade">Cidade *</label>
-  <input type="text" id="f-cidade" name="cidade" data-required="&quot;true&quot;" placeholder="Cidade e estado">
+  <select id="f-cidade" name="cidade" data-required="&quot;true&quot;">
+    <option value="" disabled="" selected="">Selecione…</option><option>Montes Claros, MG</option>
+  </select>
 </div>
 
 <div class="field">
@@ -797,7 +799,9 @@
           <div class="quiz-fields">
 <div class="field">
   <label for="f-cidade_com">Cidade *</label>
-  <input type="text" id="f-cidade_com" name="cidade_com" data-required="&quot;true&quot;" placeholder="Cidade e estado">
+  <select id="f-cidade_com" name="cidade_com" data-required="&quot;true&quot;">
+    <option value="" disabled="" selected="">Selecione…</option><option>Montes Claros, MG</option>
+  </select>
 </div>
 
 <div class="field">
@@ -873,8 +877,13 @@
           </legend>
           <div class="quiz-options">
             <label class="opt">
-              <input type="radio" name="prazo" value="O quanto antes">
-              <span class="opt-text">O quanto antes</span>
+              <input type="radio" name="prazo" value="Em até dois dias">
+              <span class="opt-text">Em até dois dias</span>
+              <svg class="opt-tick" aria-hidden="true"><use href="#i-arrow"></use></svg>
+            </label>
+            <label class="opt">
+              <input type="radio" name="prazo" value="Em até uma semana">
+              <span class="opt-text">Em até uma semana</span>
               <svg class="opt-tick" aria-hidden="true"><use href="#i-arrow"></use></svg>
             </label>
             <label class="opt">
@@ -885,11 +894,6 @@
             <label class="opt">
               <input type="radio" name="prazo" value="Em até 30 dias">
               <span class="opt-text">Em até 30 dias</span>
-              <svg class="opt-tick" aria-hidden="true"><use href="#i-arrow"></use></svg>
-            </label>
-            <label class="opt">
-              <input type="radio" name="prazo" value="Mais de 30 dias">
-              <span class="opt-text">Mais de 30 dias</span>
               <svg class="opt-tick" aria-hidden="true"><use href="#i-arrow"></use></svg>
             </label>
             <label class="opt">
@@ -912,22 +916,22 @@
         <fieldset class="quiz-fs">
           <legend class="quiz-legend">
             <span class="label pink" data-step-label=""></span>
-            <span class="t-h2">Como vocês se sentem na frente da câmera?</span><span class="quiz-help">Não existe resposta errada. Isso muda o jeito como eu me aproximo no dia.</span>
+            <span class="t-h2">Como você se sente na frente da câmera?</span><span class="quiz-help">Não existe resposta errada. Isso muda o jeito como eu me aproximo no dia.</span>
           </legend>
           <div class="quiz-options">
             <label class="opt">
-              <input type="radio" name="camera" value="À vontade, adoram aparecer">
-              <span class="opt-text">À vontade, adoram aparecer</span>
+              <input type="radio" name="camera" value="Fico à vontade, gosto de aparecer">
+              <span class="opt-text">Fico à vontade, gosto de aparecer</span>
               <svg class="opt-tick" aria-hidden="true"><use href="#i-arrow"></use></svg>
             </label>
             <label class="opt">
-              <input type="radio" name="camera" value="Um pouco tímidos, mas topam">
-              <span class="opt-text">Um pouco tímidos, mas topam</span>
+              <input type="radio" name="camera" value="Fico um pouco tímido, mas encaro">
+              <span class="opt-text">Fico um pouco tímido, mas encaro</span>
               <svg class="opt-tick" aria-hidden="true"><use href="#i-arrow"></use></svg>
             </label>
             <label class="opt">
-              <input type="radio" name="camera" value="Preferem nem perceber que estão sendo filmados">
-              <span class="opt-text">Preferem nem perceber que estão sendo filmados</span>
+              <input type="radio" name="camera" value="Prefiro nem perceber que estou sendo filmado">
+              <span class="opt-text">Prefiro nem perceber que estou sendo filmado</span>
               <svg class="opt-tick" aria-hidden="true"><use href="#i-arrow"></use></svg>
             </label>
             <label class="opt">
@@ -936,8 +940,8 @@
               <svg class="opt-tick" aria-hidden="true"><use href="#i-arrow"></use></svg>
             </label>
             <label class="opt">
-              <input type="radio" name="camera" value="Ninguém aparece, é só imagem">
-              <span class="opt-text">Ninguém aparece, é só imagem</span>
+              <input type="radio" name="camera" value="Não vou aparecer, é só imagem">
+              <span class="opt-text">Não vou aparecer, é só imagem</span>
               <svg class="opt-tick" aria-hidden="true"><use href="#i-arrow"></use></svg>
             </label>
           </div>
@@ -1149,28 +1153,33 @@
           </legend>
           <div class="quiz-options">
             <label class="opt">
-              <input type="radio" name="investimento" value="Até R$ 1.000">
-              <span class="opt-text">Até R$ 1.000</span>
+              <input type="radio" name="investimento" value="Até R$ 500">
+              <span class="opt-text">Até R$ 500</span>
               <svg class="opt-tick" aria-hidden="true"><use href="#i-arrow"></use></svg>
             </label>
             <label class="opt">
-              <input type="radio" name="investimento" value="R$ 1.000 a R$ 3.000">
-              <span class="opt-text">R$ 1.000 a R$ 3.000</span>
+              <input type="radio" name="investimento" value="R$ 500 a R$ 1.000">
+              <span class="opt-text">R$ 500 a R$ 1.000</span>
               <svg class="opt-tick" aria-hidden="true"><use href="#i-arrow"></use></svg>
             </label>
             <label class="opt">
-              <input type="radio" name="investimento" value="R$ 3.000 a R$ 6.000">
-              <span class="opt-text">R$ 3.000 a R$ 6.000</span>
+              <input type="radio" name="investimento" value="R$ 1.000 a R$ 1.500">
+              <span class="opt-text">R$ 1.000 a R$ 1.500</span>
               <svg class="opt-tick" aria-hidden="true"><use href="#i-arrow"></use></svg>
             </label>
             <label class="opt">
-              <input type="radio" name="investimento" value="R$ 6.000 a R$ 12.000">
-              <span class="opt-text">R$ 6.000 a R$ 12.000</span>
+              <input type="radio" name="investimento" value="R$ 1.500 a R$ 2.500">
+              <span class="opt-text">R$ 1.500 a R$ 2.500</span>
               <svg class="opt-tick" aria-hidden="true"><use href="#i-arrow"></use></svg>
             </label>
             <label class="opt">
-              <input type="radio" name="investimento" value="Acima de R$ 12.000">
-              <span class="opt-text">Acima de R$ 12.000</span>
+              <input type="radio" name="investimento" value="R$ 2.500 a R$ 4.000">
+              <span class="opt-text">R$ 2.500 a R$ 4.000</span>
+              <svg class="opt-tick" aria-hidden="true"><use href="#i-arrow"></use></svg>
+            </label>
+            <label class="opt">
+              <input type="radio" name="investimento" value="Acima de R$ 4.000">
+              <span class="opt-text">Acima de R$ 4.000</span>
               <svg class="opt-tick" aria-hidden="true"><use href="#i-arrow"></use></svg>
             </label>
             <label class="opt">
