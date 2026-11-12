@@ -806,7 +806,9 @@
 
 <div class="field">
   <label for="f-espaco_com">Tipo de lugar</label>
-  <input type="text" id="f-espaco_com" name="espaco_com" placeholder="Loja, estúdio, escritório…">
+  <select id="f-espaco_com" name="espaco_com">
+    <option value="" disabled="">Selecione…</option><option>Loja ou ponto comercial</option><option>Escritório</option><option>Estúdio</option><option>Restaurante, bar ou cafeteria</option><option>Salão, clínica ou consultório</option><option>Galpão ou fábrica</option><option>Imóvel residencial</option><option>Área externa</option><option>Mais de um lugar</option><option>Ainda não sei</option>
+  </select>
 </div>
 
 <div class="field full">
@@ -825,7 +827,7 @@
         <fieldset class="quiz-fs">
           <legend class="quiz-legend">
             <span class="label pink" data-step-label=""></span>
-            <span class="t-h2">Quando dá para gravar?</span>
+            <span class="t-h2">Qual a sua disponibilidade para gravar?</span>
           </legend>
           <div class="quiz-options">
             <label class="opt">
@@ -1206,7 +1208,7 @@
 
 <div class="field">
   <label for="f-whatsapp">WhatsApp *</label>
-  <input type="tel" id="f-whatsapp" name="whatsapp" required="" autocomplete="tel" inputmode="tel" placeholder="(00) 00000-0000">
+  <input type="tel" id="f-whatsapp" name="whatsapp" required="" autocomplete="tel" inputmode="tel" pattern="&#92;(&#92;d{2}&#92;) 9&#92;d{4}-&#92;d{4}" title="Digite DDD e número de celular, por exemplo (38) 99999-8888." maxlength="15" placeholder="(00) 00000-0000">
 </div>
 
 <div class="field">
@@ -1216,7 +1218,7 @@
 
 <div class="field">
   <label for="f-instagram">Instagram</label><p class="hint" id="f-instagram-hint">Para eu marcar você nas publicações.</p>
-  <input type="text" id="f-instagram" name="instagram" aria-describedby="&quot;f-instagram-hint&quot;" placeholder="@seuperfil">
+  <input type="text" id="f-instagram" name="instagram" aria-describedby="&quot;f-instagram-hint&quot;" value="@" placeholder="@seuperfil">
 </div>
 
 <div class="field full">
