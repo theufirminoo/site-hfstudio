@@ -95,7 +95,7 @@
         <fieldset class="quiz-fs">
           <legend class="quiz-legend">
             <span class="label pink" data-step-label=""></span>
-            <span class="t-h2">Que tipo de projeto você precisa?</span>
+            <span class="t-h2">Que tipo de projeto você precisa?</span><span class="quiz-help">A partir daqui as perguntas mudam conforme a sua escolha.</span>
           </legend>
           <div class="quiz-options">
             <label class="opt">
@@ -168,10 +168,19 @@
               <svg class="opt-tick" aria-hidden="true"><use href="#i-arrow"></use></svg>
             </label>
             <label class="opt">
-              <input type="radio" name="tipo_evento" value="Outro">
+              <input type="radio" name="tipo_evento" value="Ensaio ou making of">
+              <span class="opt-text">Ensaio ou making of</span>
+              <svg class="opt-tick" aria-hidden="true"><use href="#i-arrow"></use></svg>
+            </label>
+            <label class="opt">
+              <input type="radio" name="tipo_evento" value="Outro" data-abre="tipo_evento_outro">
               <span class="opt-text">Outro</span>
               <svg class="opt-tick" aria-hidden="true"><use href="#i-arrow"></use></svg>
             </label>
+            <div class="opt-abre" data-abre-campo="tipo_evento_outro" hidden="">
+              <label class="sr-only" for="f-tipo_evento_outro">Que evento é?</label>
+              <input type="text" id="f-tipo_evento_outro" name="tipo_evento_outro" placeholder="Que evento é?" autocomplete="off" disabled="">
+            </div>
           </div>
         </fieldset>
         <div class="quiz-actions">
@@ -183,7 +192,7 @@
         <fieldset class="quiz-fs">
           <legend class="quiz-legend">
             <span class="label pink" data-step-label=""></span>
-            <span class="t-h2">Quando vai ser?</span>
+            <span class="t-h2">Quando vai ser?</span><span class="quiz-help">O horário de término pode ser aproximado — serve para dimensionar a diária.</span>
           </legend>
           <div class="quiz-fields">
 <div class="field">
@@ -192,8 +201,13 @@
 </div>
 
 <div class="field">
-  <label for="f-inicio">Horário de início *</label>
+  <label for="f-inicio">Começa às *</label>
   <input type="time" id="f-inicio" name="inicio" data-required="&quot;true&quot;">
+</div>
+
+<div class="field">
+  <label for="f-termino">Termina por volta de</label>
+  <input type="time" id="f-termino" name="termino">
 </div>
 
           </div>
@@ -203,50 +217,11 @@
           <button class="btn sm" type="button" data-next="">Continuar</button>
         </div>
       </section>
-      <section class="quiz-screen" data-screen="q4" data-question="duracao" data-when-field="tipo" data-when-values="Cobertura de evento">
+      <section class="quiz-screen" data-screen="q4" data-question="local" data-fields="" data-when-field="tipo" data-when-values="Cobertura de evento">
         <fieldset class="quiz-fs">
           <legend class="quiz-legend">
             <span class="label pink" data-step-label=""></span>
-            <span class="t-h2">Quanto tempo deve durar?</span><span class="quiz-help">Serve para calcular a diária e a equipe.</span>
-          </legend>
-          <div class="quiz-options">
-            <label class="opt">
-              <input type="radio" name="duracao" value="Até 4 horas">
-              <span class="opt-text">Até 4 horas</span>
-              <svg class="opt-tick" aria-hidden="true"><use href="#i-arrow"></use></svg>
-            </label>
-            <label class="opt">
-              <input type="radio" name="duracao" value="De 4 a 8 horas">
-              <span class="opt-text">De 4 a 8 horas</span>
-              <svg class="opt-tick" aria-hidden="true"><use href="#i-arrow"></use></svg>
-            </label>
-            <label class="opt">
-              <input type="radio" name="duracao" value="Mais de 8 horas">
-              <span class="opt-text">Mais de 8 horas</span>
-              <svg class="opt-tick" aria-hidden="true"><use href="#i-arrow"></use></svg>
-            </label>
-            <label class="opt">
-              <input type="radio" name="duracao" value="O dia todo">
-              <span class="opt-text">O dia todo</span>
-              <svg class="opt-tick" aria-hidden="true"><use href="#i-arrow"></use></svg>
-            </label>
-            <label class="opt">
-              <input type="radio" name="duracao" value="Mais de um dia">
-              <span class="opt-text">Mais de um dia</span>
-              <svg class="opt-tick" aria-hidden="true"><use href="#i-arrow"></use></svg>
-            </label>
-          </div>
-        </fieldset>
-        <div class="quiz-actions">
-          <button class="btn ghost sm" type="button" data-back="">Voltar</button>
-          <button class="btn sm" type="button" data-next="">Continuar</button>
-        </div>
-      </section>
-      <section class="quiz-screen" data-screen="q5" data-question="local" data-fields="" data-when-field="tipo" data-when-values="Cobertura de evento">
-        <fieldset class="quiz-fs">
-          <legend class="quiz-legend">
-            <span class="label pink" data-step-label=""></span>
-            <span class="t-h2">Onde vai acontecer?</span>
+            <span class="t-h2">Onde vai acontecer?</span><span class="quiz-help">Se ainda não fechou o local, escreva a cidade e deixe o resto em branco.</span>
           </legend>
           <div class="quiz-fields">
 <div class="field">
@@ -254,11 +229,60 @@
   <input type="text" id="f-cidade" name="cidade" data-required="&quot;true&quot;" placeholder="Cidade e estado">
 </div>
 
-<div class="field full">
-  <label for="f-espaco">Local</label>
-  <input type="text" id="f-espaco" name="espaco" placeholder="Nome do espaço, chácara, salão…">
+<div class="field">
+  <label for="f-espaco">Nome do espaço</label>
+  <input type="text" id="f-espaco" name="espaco" placeholder="Chácara, salão, igreja…">
 </div>
 
+<div class="field full">
+  <label for="f-endereco">Endereço</label>
+  <input type="text" id="f-endereco" name="endereco" placeholder="Rua, número e bairro">
+</div>
+
+          </div>
+        </fieldset>
+        <div class="quiz-actions">
+          <button class="btn ghost sm" type="button" data-back="">Voltar</button>
+          <button class="btn sm" type="button" data-next="">Continuar</button>
+        </div>
+      </section>
+      <section class="quiz-screen" data-screen="q5" data-question="convidados" data-when-field="tipo" data-when-values="Cobertura de evento">
+        <fieldset class="quiz-fs">
+          <legend class="quiz-legend">
+            <span class="label pink" data-step-label=""></span>
+            <span class="t-h2">Quantas pessoas, mais ou menos?</span><span class="quiz-help">Muda o tamanho do evento e o tempo de cobertura.</span>
+          </legend>
+          <div class="quiz-options">
+            <label class="opt">
+              <input type="radio" name="convidados" value="Até 30 pessoas">
+              <span class="opt-text">Até 30 pessoas</span>
+              <svg class="opt-tick" aria-hidden="true"><use href="#i-arrow"></use></svg>
+            </label>
+            <label class="opt">
+              <input type="radio" name="convidados" value="De 30 a 80">
+              <span class="opt-text">De 30 a 80</span>
+              <svg class="opt-tick" aria-hidden="true"><use href="#i-arrow"></use></svg>
+            </label>
+            <label class="opt">
+              <input type="radio" name="convidados" value="De 80 a 150">
+              <span class="opt-text">De 80 a 150</span>
+              <svg class="opt-tick" aria-hidden="true"><use href="#i-arrow"></use></svg>
+            </label>
+            <label class="opt">
+              <input type="radio" name="convidados" value="De 150 a 300">
+              <span class="opt-text">De 150 a 300</span>
+              <svg class="opt-tick" aria-hidden="true"><use href="#i-arrow"></use></svg>
+            </label>
+            <label class="opt">
+              <input type="radio" name="convidados" value="Mais de 300">
+              <span class="opt-text">Mais de 300</span>
+              <svg class="opt-tick" aria-hidden="true"><use href="#i-arrow"></use></svg>
+            </label>
+            <label class="opt">
+              <input type="radio" name="convidados" value="Ainda não sei">
+              <span class="opt-text">Ainda não sei</span>
+              <svg class="opt-tick" aria-hidden="true"><use href="#i-arrow"></use></svg>
+            </label>
           </div>
         </fieldset>
         <div class="quiz-actions">
@@ -270,12 +294,17 @@
         <fieldset class="quiz-fs">
           <legend class="quiz-legend">
             <span class="label pink" data-step-label=""></span>
-            <span class="t-h2">Quais momentos não podem faltar?</span><span class="quiz-help">Marque quantos quiser.</span>
+            <span class="t-h2">Quais momentos não podem faltar?</span><span class="quiz-help">Marque quantos quiser. É por aqui que eu monto o roteiro do dia.</span>
           </legend>
           <div class="quiz-options">
             <label class="opt">
-              <input type="checkbox" name="momentos[]" value="Making of dos noivos">
-              <span class="opt-text">Making of dos noivos</span>
+              <input type="checkbox" name="momentos[]" value="Making of da noiva">
+              <span class="opt-text">Making of da noiva</span>
+              <svg class="opt-tick" aria-hidden="true"><use href="#i-arrow"></use></svg>
+            </label>
+            <label class="opt">
+              <input type="checkbox" name="momentos[]" value="Making of do noivo">
+              <span class="opt-text">Making of do noivo</span>
               <svg class="opt-tick" aria-hidden="true"><use href="#i-arrow"></use></svg>
             </label>
             <label class="opt">
@@ -296,6 +325,11 @@
             <label class="opt">
               <input type="checkbox" name="momentos[]" value="Troca de votos e alianças">
               <span class="opt-text">Troca de votos e alianças</span>
+              <svg class="opt-tick" aria-hidden="true"><use href="#i-arrow"></use></svg>
+            </label>
+            <label class="opt">
+              <input type="checkbox" name="momentos[]" value="Saída dos noivos">
+              <span class="opt-text">Saída dos noivos</span>
               <svg class="opt-tick" aria-hidden="true"><use href="#i-arrow"></use></svg>
             </label>
             <label class="opt">
@@ -344,7 +378,7 @@
         <fieldset class="quiz-fs">
           <legend class="quiz-legend">
             <span class="label pink" data-step-label=""></span>
-            <span class="t-h2">Quais momentos não podem faltar?</span><span class="quiz-help">Marque quantos quiser.</span>
+            <span class="t-h2">Quais momentos não podem faltar?</span><span class="quiz-help">Marque quantos quiser. É por aqui que eu monto o roteiro do dia.</span>
           </legend>
           <div class="quiz-options">
             <label class="opt">
@@ -408,7 +442,7 @@
         <fieldset class="quiz-fs">
           <legend class="quiz-legend">
             <span class="label pink" data-step-label=""></span>
-            <span class="t-h2">Quais momentos não podem faltar?</span><span class="quiz-help">Marque quantos quiser.</span>
+            <span class="t-h2">Quais momentos não podem faltar?</span><span class="quiz-help">Marque quantos quiser. É por aqui que eu monto o roteiro do dia.</span>
           </legend>
           <div class="quiz-options">
             <label class="opt">
@@ -467,7 +501,7 @@
         <fieldset class="quiz-fs">
           <legend class="quiz-legend">
             <span class="label pink" data-step-label=""></span>
-            <span class="t-h2">Quais momentos não podem faltar?</span><span class="quiz-help">Marque quantos quiser.</span>
+            <span class="t-h2">Quais momentos não podem faltar?</span><span class="quiz-help">Marque quantos quiser. É por aqui que eu monto o roteiro do dia.</span>
           </legend>
           <div class="quiz-options">
             <label class="opt">
@@ -522,11 +556,11 @@
           <button class="btn sm" type="button" data-next="">Continuar</button>
         </div>
       </section>
-      <section class="quiz-screen" data-screen="q10" data-question="momentos" data-multi="" data-when-field="tipo_evento" data-when-values="Outro">
+      <section class="quiz-screen" data-screen="q10" data-question="momentos" data-multi="" data-when-field="tipo_evento" data-when-values="Ensaio ou making of|Outro">
         <fieldset class="quiz-fs">
           <legend class="quiz-legend">
             <span class="label pink" data-step-label=""></span>
-            <span class="t-h2">Quais momentos não podem faltar?</span><span class="quiz-help">Marque quantos quiser.</span>
+            <span class="t-h2">Quais momentos não podem faltar?</span><span class="quiz-help">Marque quantos quiser. É por aqui que eu monto o roteiro do dia.</span>
           </legend>
           <div class="quiz-options">
             <label class="opt">
@@ -535,13 +569,18 @@
               <svg class="opt-tick" aria-hidden="true"><use href="#i-arrow"></use></svg>
             </label>
             <label class="opt">
-              <input type="checkbox" name="momentos[]" value="Chegada dos convidados">
-              <span class="opt-text">Chegada dos convidados</span>
+              <input type="checkbox" name="momentos[]" value="Chegada das pessoas">
+              <span class="opt-text">Chegada das pessoas</span>
               <svg class="opt-tick" aria-hidden="true"><use href="#i-arrow"></use></svg>
             </label>
             <label class="opt">
               <input type="checkbox" name="momentos[]" value="Momento principal">
               <span class="opt-text">Momento principal</span>
+              <svg class="opt-tick" aria-hidden="true"><use href="#i-arrow"></use></svg>
+            </label>
+            <label class="opt">
+              <input type="checkbox" name="momentos[]" value="Retratos e poses">
+              <span class="opt-text">Retratos e poses</span>
               <svg class="opt-tick" aria-hidden="true"><use href="#i-arrow"></use></svg>
             </label>
             <label class="opt">
@@ -575,17 +614,21 @@
         <fieldset class="quiz-fs">
           <legend class="quiz-legend">
             <span class="label pink" data-step-label=""></span>
-            <span class="t-h2">Alguém ou algo merece destaque?</span>
+            <span class="t-h2">Tem alguém que não pode faltar no vídeo?</span><span class="quiz-help">Avó, padrinho, filho pequeno, o amigo que veio de longe — eu fico de olho.</span>
           </legend>
           <div class="quiz-options">
             <label class="opt">
-              <input type="radio" name="destaque" value="Sim, vou contar no fim do formulário">
-              <span class="opt-text">Sim, vou contar no fim do formulário</span>
+              <input type="radio" name="destaque" value="Sim, vou dizer quem" data-abre="destaque_quem">
+              <span class="opt-text">Sim, vou dizer quem</span>
               <svg class="opt-tick" aria-hidden="true"><use href="#i-arrow"></use></svg>
             </label>
+            <div class="opt-abre" data-abre-campo="destaque_quem" hidden="">
+              <label class="sr-only" for="f-destaque_quem">Quem são essas pessoas?</label>
+              <input type="text" id="f-destaque_quem" name="destaque_quem" placeholder="Quem são essas pessoas?" autocomplete="off" disabled="">
+            </div>
             <label class="opt">
-              <input type="radio" name="destaque" value="Não, pode registrar tudo por igual">
-              <span class="opt-text">Não, pode registrar tudo por igual</span>
+              <input type="radio" name="destaque" value="Não, pode registrar todo mundo por igual">
+              <span class="opt-text">Não, pode registrar todo mundo por igual</span>
               <svg class="opt-tick" aria-hidden="true"><use href="#i-arrow"></use></svg>
             </label>
           </div>
@@ -595,31 +638,30 @@
           <button class="btn sm" type="button" data-next="">Continuar</button>
         </div>
       </section>
-      <section class="quiz-screen" data-screen="q12" data-question="estilo" data-when-field="tipo" data-when-values="Cobertura de evento">
+      <section class="quiz-screen" data-screen="q12" data-question="evitar" data-when-field="tipo" data-when-values="Cobertura de evento">
         <fieldset class="quiz-fs">
           <legend class="quiz-legend">
             <span class="label pink" data-step-label=""></span>
-            <span class="t-h2">Que estilo de vídeo combina com você?</span>
+            <span class="t-h2">E alguém que prefere não aparecer?</span><span class="quiz-help">Acontece bastante, e é melhor eu já saber antes.</span>
           </legend>
           <div class="quiz-options">
             <label class="opt">
-              <input type="radio" name="estilo" value="Espontâneo e documental">
-              <span class="opt-text">Espontâneo e documental</span>
+              <input type="radio" name="evitar" value="Não, pode filmar à vontade">
+              <span class="opt-text">Não, pode filmar à vontade</span>
               <svg class="opt-tick" aria-hidden="true"><use href="#i-arrow"></use></svg>
             </label>
             <label class="opt">
-              <input type="radio" name="estilo" value="Dinâmico e acelerado">
-              <span class="opt-text">Dinâmico e acelerado</span>
+              <input type="radio" name="evitar" value="Sim, tem sim" data-abre="evitar_quem">
+              <span class="opt-text">Sim, tem sim</span>
               <svg class="opt-tick" aria-hidden="true"><use href="#i-arrow"></use></svg>
             </label>
+            <div class="opt-abre" data-abre-campo="evitar_quem" hidden="">
+              <label class="sr-only" for="f-evitar_quem">Quem prefere ficar fora?</label>
+              <input type="text" id="f-evitar_quem" name="evitar_quem" placeholder="Quem prefere ficar fora?" autocomplete="off" disabled="">
+            </div>
             <label class="opt">
-              <input type="radio" name="estilo" value="Delicado e cinematográfico">
-              <span class="opt-text">Delicado e cinematográfico</span>
-              <svg class="opt-tick" aria-hidden="true"><use href="#i-arrow"></use></svg>
-            </label>
-            <label class="opt">
-              <input type="radio" name="estilo" value="Pode misturar, confio no seu olhar">
-              <span class="opt-text">Pode misturar, confio no seu olhar</span>
+              <input type="radio" name="evitar" value="Prefiro te avisar no dia">
+              <span class="opt-text">Prefiro te avisar no dia</span>
               <svg class="opt-tick" aria-hidden="true"><use href="#i-arrow"></use></svg>
             </label>
           </div>
@@ -629,70 +671,7 @@
           <button class="btn sm" type="button" data-next="">Continuar</button>
         </div>
       </section>
-      <section class="quiz-screen" data-screen="q13" data-question="musica" data-when-field="tipo" data-when-values="Cobertura de evento">
-        <fieldset class="quiz-fs">
-          <legend class="quiz-legend">
-            <span class="label pink" data-step-label=""></span>
-            <span class="t-h2">E o som do vídeo?</span>
-          </legend>
-          <div class="quiz-options">
-            <label class="opt">
-              <input type="radio" name="musica" value="Trilha musical escolhida">
-              <span class="opt-text">Trilha musical escolhida</span>
-              <svg class="opt-tick" aria-hidden="true"><use href="#i-arrow"></use></svg>
-            </label>
-            <label class="opt">
-              <input type="radio" name="musica" value="Áudios originais do evento (falas, risadas, ambiente)">
-              <span class="opt-text">Áudios originais do evento (falas, risadas, ambiente)</span>
-              <svg class="opt-tick" aria-hidden="true"><use href="#i-arrow"></use></svg>
-            </label>
-            <label class="opt">
-              <input type="radio" name="musica" value="Os dois misturados">
-              <span class="opt-text">Os dois misturados</span>
-              <svg class="opt-tick" aria-hidden="true"><use href="#i-arrow"></use></svg>
-            </label>
-            <label class="opt">
-              <input type="radio" name="musica" value="Tenho uma música específica em mente">
-              <span class="opt-text">Tenho uma música específica em mente</span>
-              <svg class="opt-tick" aria-hidden="true"><use href="#i-arrow"></use></svg>
-            </label>
-          </div>
-        </fieldset>
-        <div class="quiz-actions">
-          <button class="btn ghost sm" type="button" data-back="">Voltar</button>
-          <button class="btn sm" type="button" data-next="">Continuar</button>
-        </div>
-      </section>
-      <section class="quiz-screen" data-screen="q14" data-question="portfolio" data-when-field="tipo" data-when-values="Cobertura de evento">
-        <fieldset class="quiz-fs">
-          <legend class="quiz-legend">
-            <span class="label pink" data-step-label=""></span>
-            <span class="t-h2">Posso usar trechos no meu portfólio e nas redes?</span><span class="quiz-help">Você decide. Isso não muda o preço nem o que você recebe.</span>
-          </legend>
-          <div class="quiz-options">
-            <label class="opt">
-              <input type="radio" name="portfolio" value="Sim, pode usar à vontade">
-              <span class="opt-text">Sim, pode usar à vontade</span>
-              <svg class="opt-tick" aria-hidden="true"><use href="#i-arrow"></use></svg>
-            </label>
-            <label class="opt">
-              <input type="radio" name="portfolio" value="Sim, mas sem mostrar o rosto dos convidados">
-              <span class="opt-text">Sim, mas sem mostrar o rosto dos convidados</span>
-              <svg class="opt-tick" aria-hidden="true"><use href="#i-arrow"></use></svg>
-            </label>
-            <label class="opt">
-              <input type="radio" name="portfolio" value="Prefiro que não">
-              <span class="opt-text">Prefiro que não</span>
-              <svg class="opt-tick" aria-hidden="true"><use href="#i-arrow"></use></svg>
-            </label>
-          </div>
-        </fieldset>
-        <div class="quiz-actions">
-          <button class="btn ghost sm" type="button" data-back="">Voltar</button>
-          <button class="btn sm" type="button" data-next="">Continuar</button>
-        </div>
-      </section>
-      <section class="quiz-screen" data-screen="q15" data-question="segmento" data-when-field="tipo" data-when-values="Vídeo institucional|Conteúdo para redes (Reels, Shorts)|Publicidade e anúncios|Motion design e animação|Ainda não sei, me ajuda a decidir">
+      <section class="quiz-screen" data-screen="q13" data-question="segmento" data-when-field="tipo" data-when-values="Vídeo institucional|Conteúdo para redes (Reels, Shorts)|Publicidade e anúncios|Motion design e animação|Ainda não sei, me ajuda a decidir">
         <fieldset class="quiz-fs">
           <legend class="quiz-legend">
             <span class="label pink" data-step-label=""></span>
@@ -715,10 +694,34 @@
               <svg class="opt-tick" aria-hidden="true"><use href="#i-arrow"></use></svg>
             </label>
             <label class="opt">
-              <input type="radio" name="segmento" value="Outra área">
+              <input type="radio" name="segmento" value="Beleza e estética">
+              <span class="opt-text">Beleza e estética</span>
+              <svg class="opt-tick" aria-hidden="true"><use href="#i-arrow"></use></svg>
+            </label>
+            <label class="opt">
+              <input type="radio" name="segmento" value="Imóveis e arquitetura">
+              <span class="opt-text">Imóveis e arquitetura</span>
+              <svg class="opt-tick" aria-hidden="true"><use href="#i-arrow"></use></svg>
+            </label>
+            <label class="opt">
+              <input type="radio" name="segmento" value="Saúde e bem-estar">
+              <span class="opt-text">Saúde e bem-estar</span>
+              <svg class="opt-tick" aria-hidden="true"><use href="#i-arrow"></use></svg>
+            </label>
+            <label class="opt">
+              <input type="radio" name="segmento" value="Loja ou comércio">
+              <span class="opt-text">Loja ou comércio</span>
+              <svg class="opt-tick" aria-hidden="true"><use href="#i-arrow"></use></svg>
+            </label>
+            <label class="opt">
+              <input type="radio" name="segmento" value="Outra área" data-abre="segmento_outra">
               <span class="opt-text">Outra área</span>
               <svg class="opt-tick" aria-hidden="true"><use href="#i-arrow"></use></svg>
             </label>
+            <div class="opt-abre" data-abre-campo="segmento_outra" hidden="">
+              <label class="sr-only" for="f-segmento_outra">Qual é a sua área?</label>
+              <input type="text" id="f-segmento_outra" name="segmento_outra" placeholder="Qual é a sua área?" autocomplete="off" disabled="">
+            </div>
           </div>
         </fieldset>
         <div class="quiz-actions">
@@ -726,36 +729,56 @@
           <button class="btn sm" type="button" data-next="">Continuar</button>
         </div>
       </section>
-      <section class="quiz-screen" data-screen="q16" data-question="objetivo" data-when-field="tipo" data-when-values="Vídeo institucional|Conteúdo para redes (Reels, Shorts)|Publicidade e anúncios|Motion design e animação|Ainda não sei, me ajuda a decidir">
+      <section class="quiz-screen" data-screen="q14" data-question="o_que_gravar" data-multi="" data-when-field="tipo" data-when-values="Vídeo institucional|Conteúdo para redes (Reels, Shorts)|Publicidade e anúncios|Motion design e animação|Ainda não sei, me ajuda a decidir">
         <fieldset class="quiz-fs">
           <legend class="quiz-legend">
             <span class="label pink" data-step-label=""></span>
-            <span class="t-h2">O que esse vídeo precisa fazer?</span><span class="quiz-help">O que você quer que aconteça depois que a pessoa assistir.</span>
+            <span class="t-h2">O que entra na gravação?</span><span class="quiz-help">Marque quantos quiser. É o que eu preciso ter em mãos no dia.</span>
           </legend>
           <div class="quiz-options">
             <label class="opt">
-              <input type="radio" name="objetivo" value="Trazer clientes novos">
-              <span class="opt-text">Trazer clientes novos</span>
+              <input type="checkbox" name="o_que_gravar[]" value="O produto, em detalhe">
+              <span class="opt-text">O produto, em detalhe</span>
               <svg class="opt-tick" aria-hidden="true"><use href="#i-arrow"></use></svg>
             </label>
             <label class="opt">
-              <input type="radio" name="objetivo" value="Vender um produto ou serviço">
-              <span class="opt-text">Vender um produto ou serviço</span>
+              <input type="checkbox" name="o_que_gravar[]" value="O espaço e o ambiente">
+              <span class="opt-text">O espaço e o ambiente</span>
               <svg class="opt-tick" aria-hidden="true"><use href="#i-arrow"></use></svg>
             </label>
             <label class="opt">
-              <input type="radio" name="objetivo" value="Fortalecer a marca">
-              <span class="opt-text">Fortalecer a marca</span>
+              <input type="checkbox" name="o_que_gravar[]" value="A equipe trabalhando">
+              <span class="opt-text">A equipe trabalhando</span>
               <svg class="opt-tick" aria-hidden="true"><use href="#i-arrow"></use></svg>
             </label>
             <label class="opt">
-              <input type="radio" name="objetivo" value="Explicar como funciona">
-              <span class="opt-text">Explicar como funciona</span>
+              <input type="checkbox" name="o_que_gravar[]" value="O processo de produção">
+              <span class="opt-text">O processo de produção</span>
               <svg class="opt-tick" aria-hidden="true"><use href="#i-arrow"></use></svg>
             </label>
             <label class="opt">
-              <input type="radio" name="objetivo" value="Registrar um momento da empresa">
-              <span class="opt-text">Registrar um momento da empresa</span>
+              <input type="checkbox" name="o_que_gravar[]" value="Depoimento de cliente">
+              <span class="opt-text">Depoimento de cliente</span>
+              <svg class="opt-tick" aria-hidden="true"><use href="#i-arrow"></use></svg>
+            </label>
+            <label class="opt">
+              <input type="checkbox" name="o_que_gravar[]" value="Você falando para a câmera">
+              <span class="opt-text">Você falando para a câmera</span>
+              <svg class="opt-tick" aria-hidden="true"><use href="#i-arrow"></use></svg>
+            </label>
+            <label class="opt">
+              <input type="checkbox" name="o_que_gravar[]" value="Bastidores">
+              <span class="opt-text">Bastidores</span>
+              <svg class="opt-tick" aria-hidden="true"><use href="#i-arrow"></use></svg>
+            </label>
+            <label class="opt">
+              <input type="checkbox" name="o_que_gravar[]" value="Modelos ou figurantes">
+              <span class="opt-text">Modelos ou figurantes</span>
+              <svg class="opt-tick" aria-hidden="true"><use href="#i-arrow"></use></svg>
+            </label>
+            <label class="opt">
+              <input type="checkbox" name="o_que_gravar[]" value="Ainda não sei, me ajuda a decidir">
+              <span class="opt-text">Ainda não sei, me ajuda a decidir</span>
               <svg class="opt-tick" aria-hidden="true"><use href="#i-arrow"></use></svg>
             </label>
           </div>
@@ -765,36 +788,74 @@
           <button class="btn sm" type="button" data-next="">Continuar</button>
         </div>
       </section>
-      <section class="quiz-screen" data-screen="q17" data-question="onde" data-when-field="tipo" data-when-values="Vídeo institucional|Conteúdo para redes (Reels, Shorts)|Publicidade e anúncios|Motion design e animação|Ainda não sei, me ajuda a decidir">
+      <section class="quiz-screen" data-screen="q15" data-question="local_com" data-fields="" data-when-field="tipo" data-when-values="Vídeo institucional|Conteúdo para redes (Reels, Shorts)|Publicidade e anúncios|Motion design e animação|Ainda não sei, me ajuda a decidir">
         <fieldset class="quiz-fs">
           <legend class="quiz-legend">
             <span class="label pink" data-step-label=""></span>
-            <span class="t-h2">Onde ele vai aparecer primeiro?</span>
+            <span class="t-h2">Onde a gente grava?</span><span class="quiz-help">Se for em mais de um lugar, escreva os dois no endereço.</span>
+          </legend>
+          <div class="quiz-fields">
+<div class="field">
+  <label for="f-cidade_com">Cidade *</label>
+  <input type="text" id="f-cidade_com" name="cidade_com" data-required="&quot;true&quot;" placeholder="Cidade e estado">
+</div>
+
+<div class="field">
+  <label for="f-espaco_com">Tipo de lugar</label>
+  <input type="text" id="f-espaco_com" name="espaco_com" placeholder="Loja, estúdio, escritório…">
+</div>
+
+<div class="field full">
+  <label for="f-endereco_com">Endereço</label>
+  <input type="text" id="f-endereco_com" name="endereco_com" placeholder="Rua, número e bairro">
+</div>
+
+          </div>
+        </fieldset>
+        <div class="quiz-actions">
+          <button class="btn ghost sm" type="button" data-back="">Voltar</button>
+          <button class="btn sm" type="button" data-next="">Continuar</button>
+        </div>
+      </section>
+      <section class="quiz-screen" data-screen="q16" data-question="quando_com" data-when-field="tipo" data-when-values="Vídeo institucional|Conteúdo para redes (Reels, Shorts)|Publicidade e anúncios|Motion design e animação|Ainda não sei, me ajuda a decidir">
+        <fieldset class="quiz-fs">
+          <legend class="quiz-legend">
+            <span class="label pink" data-step-label=""></span>
+            <span class="t-h2">Quando dá para gravar?</span>
           </legend>
           <div class="quiz-options">
             <label class="opt">
-              <input type="radio" name="onde" value="Instagram ou TikTok">
-              <span class="opt-text">Instagram ou TikTok</span>
+              <input type="radio" name="quando_com" value="Qualquer dia da semana">
+              <span class="opt-text">Qualquer dia da semana</span>
               <svg class="opt-tick" aria-hidden="true"><use href="#i-arrow"></use></svg>
             </label>
             <label class="opt">
-              <input type="radio" name="onde" value="YouTube">
-              <span class="opt-text">YouTube</span>
+              <input type="radio" name="quando_com" value="Só em dia útil, no horário comercial">
+              <span class="opt-text">Só em dia útil, no horário comercial</span>
               <svg class="opt-tick" aria-hidden="true"><use href="#i-arrow"></use></svg>
             </label>
             <label class="opt">
-              <input type="radio" name="onde" value="No site da empresa">
-              <span class="opt-text">No site da empresa</span>
+              <input type="radio" name="quando_com" value="Só fora do horário comercial">
+              <span class="opt-text">Só fora do horário comercial</span>
               <svg class="opt-tick" aria-hidden="true"><use href="#i-arrow"></use></svg>
             </label>
             <label class="opt">
-              <input type="radio" name="onde" value="Anúncios pagos">
-              <span class="opt-text">Anúncios pagos</span>
+              <input type="radio" name="quando_com" value="Só no fim de semana">
+              <span class="opt-text">Só no fim de semana</span>
               <svg class="opt-tick" aria-hidden="true"><use href="#i-arrow"></use></svg>
             </label>
             <label class="opt">
-              <input type="radio" name="onde" value="Telão, num evento">
-              <span class="opt-text">Telão, num evento</span>
+              <input type="radio" name="quando_com" value="Tenho uma data marcada" data-abre="data_marcada">
+              <span class="opt-text">Tenho uma data marcada</span>
+              <svg class="opt-tick" aria-hidden="true"><use href="#i-arrow"></use></svg>
+            </label>
+            <div class="opt-abre" data-abre-campo="data_marcada" hidden="">
+              <label class="sr-only" for="f-data_marcada">Que dia?</label>
+              <input type="text" id="f-data_marcada" name="data_marcada" placeholder="Que dia?" autocomplete="off" disabled="">
+            </div>
+            <label class="opt">
+              <input type="radio" name="quando_com" value="Ainda não sei">
+              <span class="opt-text">Ainda não sei</span>
               <svg class="opt-tick" aria-hidden="true"><use href="#i-arrow"></use></svg>
             </label>
           </div>
@@ -804,11 +865,11 @@
           <button class="btn sm" type="button" data-next="">Continuar</button>
         </div>
       </section>
-      <section class="quiz-screen" data-screen="q18" data-question="prazo" data-when-field="tipo" data-when-values="Vídeo institucional|Conteúdo para redes (Reels, Shorts)|Publicidade e anúncios|Motion design e animação|Ainda não sei, me ajuda a decidir">
+      <section class="quiz-screen" data-screen="q17" data-question="prazo" data-when-field="tipo" data-when-values="Vídeo institucional|Conteúdo para redes (Reels, Shorts)|Publicidade e anúncios|Motion design e animação|Ainda não sei, me ajuda a decidir">
         <fieldset class="quiz-fs">
           <legend class="quiz-legend">
             <span class="label pink" data-step-label=""></span>
-            <span class="t-h2">Para quando você precisa?</span>
+            <span class="t-h2">Para quando você precisa do vídeo pronto?</span>
           </legend>
           <div class="quiz-options">
             <label class="opt">
@@ -832,8 +893,51 @@
               <svg class="opt-tick" aria-hidden="true"><use href="#i-arrow"></use></svg>
             </label>
             <label class="opt">
-              <input type="radio" name="prazo" value="Tenho uma data marcada">
-              <span class="opt-text">Tenho uma data marcada</span>
+              <input type="radio" name="prazo" value="Tenho uma data limite" data-abre="prazo_limite">
+              <span class="opt-text">Tenho uma data limite</span>
+              <svg class="opt-tick" aria-hidden="true"><use href="#i-arrow"></use></svg>
+            </label>
+            <div class="opt-abre" data-abre-campo="prazo_limite" hidden="">
+              <label class="sr-only" for="f-prazo_limite">Até que dia?</label>
+              <input type="text" id="f-prazo_limite" name="prazo_limite" placeholder="Até que dia?" autocomplete="off" disabled="">
+            </div>
+          </div>
+        </fieldset>
+        <div class="quiz-actions">
+          <button class="btn ghost sm" type="button" data-back="">Voltar</button>
+          <button class="btn sm" type="button" data-next="">Continuar</button>
+        </div>
+      </section>
+      <section class="quiz-screen" data-screen="q18" data-question="camera">
+        <fieldset class="quiz-fs">
+          <legend class="quiz-legend">
+            <span class="label pink" data-step-label=""></span>
+            <span class="t-h2">Como vocês se sentem na frente da câmera?</span><span class="quiz-help">Não existe resposta errada. Isso muda o jeito como eu me aproximo no dia.</span>
+          </legend>
+          <div class="quiz-options">
+            <label class="opt">
+              <input type="radio" name="camera" value="À vontade, adoram aparecer">
+              <span class="opt-text">À vontade, adoram aparecer</span>
+              <svg class="opt-tick" aria-hidden="true"><use href="#i-arrow"></use></svg>
+            </label>
+            <label class="opt">
+              <input type="radio" name="camera" value="Um pouco tímidos, mas topam">
+              <span class="opt-text">Um pouco tímidos, mas topam</span>
+              <svg class="opt-tick" aria-hidden="true"><use href="#i-arrow"></use></svg>
+            </label>
+            <label class="opt">
+              <input type="radio" name="camera" value="Preferem nem perceber que estão sendo filmados">
+              <span class="opt-text">Preferem nem perceber que estão sendo filmados</span>
+              <svg class="opt-tick" aria-hidden="true"><use href="#i-arrow"></use></svg>
+            </label>
+            <label class="opt">
+              <input type="radio" name="camera" value="Vai ter de tudo um pouco">
+              <span class="opt-text">Vai ter de tudo um pouco</span>
+              <svg class="opt-tick" aria-hidden="true"><use href="#i-arrow"></use></svg>
+            </label>
+            <label class="opt">
+              <input type="radio" name="camera" value="Ninguém aparece, é só imagem">
+              <span class="opt-text">Ninguém aparece, é só imagem</span>
               <svg class="opt-tick" aria-hidden="true"><use href="#i-arrow"></use></svg>
             </label>
           </div>
@@ -843,11 +947,205 @@
           <button class="btn sm" type="button" data-next="">Continuar</button>
         </div>
       </section>
-      <section class="quiz-screen" data-screen="q19" data-question="investimento">
+      <section class="quiz-screen" data-screen="q19" data-question="estilo">
         <fieldset class="quiz-fs">
           <legend class="quiz-legend">
             <span class="label pink" data-step-label=""></span>
-            <span class="t-h2">Quanto pretende investir?</span><span class="quiz-help">Não é proposta fechada. Serve para desenhar algo do tamanho do seu bolso.</span>
+            <span class="t-h2">Que clima você imagina no vídeo?</span><span class="quiz-help">É o que mais define o resultado. Pode escolher pelo que te emociona.</span>
+          </legend>
+          <div class="quiz-options">
+            <label class="opt">
+              <input type="radio" name="estilo" value="Emocionante e delicado">
+              <span class="opt-text">Emocionante e delicado</span>
+              <svg class="opt-tick" aria-hidden="true"><use href="#i-arrow"></use></svg>
+            </label>
+            <label class="opt">
+              <input type="radio" name="estilo" value="Alegre e animado">
+              <span class="opt-text">Alegre e animado</span>
+              <svg class="opt-tick" aria-hidden="true"><use href="#i-arrow"></use></svg>
+            </label>
+            <label class="opt">
+              <input type="radio" name="estilo" value="Cinematográfico, com cara de filme">
+              <span class="opt-text">Cinematográfico, com cara de filme</span>
+              <svg class="opt-tick" aria-hidden="true"><use href="#i-arrow"></use></svg>
+            </label>
+            <label class="opt">
+              <input type="radio" name="estilo" value="Espontâneo, tipo documentário">
+              <span class="opt-text">Espontâneo, tipo documentário</span>
+              <svg class="opt-tick" aria-hidden="true"><use href="#i-arrow"></use></svg>
+            </label>
+            <label class="opt">
+              <input type="radio" name="estilo" value="Clean e elegante">
+              <span class="opt-text">Clean e elegante</span>
+              <svg class="opt-tick" aria-hidden="true"><use href="#i-arrow"></use></svg>
+            </label>
+            <label class="opt">
+              <input type="radio" name="estilo" value="Pode misturar, confio no seu olhar">
+              <span class="opt-text">Pode misturar, confio no seu olhar</span>
+              <svg class="opt-tick" aria-hidden="true"><use href="#i-arrow"></use></svg>
+            </label>
+          </div>
+        </fieldset>
+        <div class="quiz-actions">
+          <button class="btn ghost sm" type="button" data-back="">Voltar</button>
+          <button class="btn sm" type="button" data-next="">Continuar</button>
+        </div>
+      </section>
+      <section class="quiz-screen" data-screen="q20" data-question="ritmo">
+        <fieldset class="quiz-fs">
+          <legend class="quiz-legend">
+            <span class="label pink" data-step-label=""></span>
+            <span class="t-h2">E o ritmo da edição?</span>
+          </legend>
+          <div class="quiz-options">
+            <label class="opt">
+              <input type="radio" name="ritmo" value="Calmo, deixando os momentos respirarem">
+              <span class="opt-text">Calmo, deixando os momentos respirarem</span>
+              <svg class="opt-tick" aria-hidden="true"><use href="#i-arrow"></use></svg>
+            </label>
+            <label class="opt">
+              <input type="radio" name="ritmo" value="Dinâmico, com cortes rápidos">
+              <span class="opt-text">Dinâmico, com cortes rápidos</span>
+              <svg class="opt-tick" aria-hidden="true"><use href="#i-arrow"></use></svg>
+            </label>
+            <label class="opt">
+              <input type="radio" name="ritmo" value="Depende do momento, vai variando">
+              <span class="opt-text">Depende do momento, vai variando</span>
+              <svg class="opt-tick" aria-hidden="true"><use href="#i-arrow"></use></svg>
+            </label>
+            <label class="opt">
+              <input type="radio" name="ritmo" value="Confio no seu olhar">
+              <span class="opt-text">Confio no seu olhar</span>
+              <svg class="opt-tick" aria-hidden="true"><use href="#i-arrow"></use></svg>
+            </label>
+          </div>
+        </fieldset>
+        <div class="quiz-actions">
+          <button class="btn ghost sm" type="button" data-back="">Voltar</button>
+          <button class="btn sm" type="button" data-next="">Continuar</button>
+        </div>
+      </section>
+      <section class="quiz-screen" data-screen="q21" data-question="musica">
+        <fieldset class="quiz-fs">
+          <legend class="quiz-legend">
+            <span class="label pink" data-step-label=""></span>
+            <span class="t-h2">E o som do vídeo?</span>
+          </legend>
+          <div class="quiz-options">
+            <label class="opt">
+              <input type="radio" name="musica" value="Trilha musical que você escolher">
+              <span class="opt-text">Trilha musical que você escolher</span>
+              <svg class="opt-tick" aria-hidden="true"><use href="#i-arrow"></use></svg>
+            </label>
+            <label class="opt">
+              <input type="radio" name="musica" value="Áudios originais (falas, risadas, ambiente)">
+              <span class="opt-text">Áudios originais (falas, risadas, ambiente)</span>
+              <svg class="opt-tick" aria-hidden="true"><use href="#i-arrow"></use></svg>
+            </label>
+            <label class="opt">
+              <input type="radio" name="musica" value="Os dois misturados">
+              <span class="opt-text">Os dois misturados</span>
+              <svg class="opt-tick" aria-hidden="true"><use href="#i-arrow"></use></svg>
+            </label>
+            <label class="opt">
+              <input type="radio" name="musica" value="Tenho uma música em mente" data-abre="musica_escolhida">
+              <span class="opt-text">Tenho uma música em mente</span>
+              <svg class="opt-tick" aria-hidden="true"><use href="#i-arrow"></use></svg>
+            </label>
+            <div class="opt-abre" data-abre-campo="musica_escolhida" hidden="">
+              <label class="sr-only" for="f-musica_escolhida">Qual música? (nome e artista)</label>
+              <input type="text" id="f-musica_escolhida" name="musica_escolhida" placeholder="Qual música? (nome e artista)" autocomplete="off" disabled="">
+            </div>
+          </div>
+        </fieldset>
+        <div class="quiz-actions">
+          <button class="btn ghost sm" type="button" data-back="">Voltar</button>
+          <button class="btn sm" type="button" data-next="">Continuar</button>
+        </div>
+      </section>
+      <section class="quiz-screen" data-screen="q22" data-question="entrega" data-multi="">
+        <fieldset class="quiz-fs">
+          <legend class="quiz-legend">
+            <span class="label pink" data-step-label=""></span>
+            <span class="t-h2">Que formatos você quer receber?</span><span class="quiz-help">Marque quantos quiser. Se não souber, deixe a última opção.</span>
+          </legend>
+          <div class="quiz-options">
+            <label class="opt">
+              <input type="checkbox" name="entrega[]" value="Vídeo completo">
+              <span class="opt-text">Vídeo completo</span>
+              <svg class="opt-tick" aria-hidden="true"><use href="#i-arrow"></use></svg>
+            </label>
+            <label class="opt">
+              <input type="checkbox" name="entrega[]" value="Versão curta (teaser)">
+              <span class="opt-text">Versão curta (teaser)</span>
+              <svg class="opt-tick" aria-hidden="true"><use href="#i-arrow"></use></svg>
+            </label>
+            <label class="opt">
+              <input type="checkbox" name="entrega[]" value="Reels vertical para Instagram ou TikTok">
+              <span class="opt-text">Reels vertical para Instagram ou TikTok</span>
+              <svg class="opt-tick" aria-hidden="true"><use href="#i-arrow"></use></svg>
+            </label>
+            <label class="opt">
+              <input type="checkbox" name="entrega[]" value="Vídeo horizontal para YouTube ou site">
+              <span class="opt-text">Vídeo horizontal para YouTube ou site</span>
+              <svg class="opt-tick" aria-hidden="true"><use href="#i-arrow"></use></svg>
+            </label>
+            <label class="opt">
+              <input type="checkbox" name="entrega[]" value="Fotos tiradas do vídeo">
+              <span class="opt-text">Fotos tiradas do vídeo</span>
+              <svg class="opt-tick" aria-hidden="true"><use href="#i-arrow"></use></svg>
+            </label>
+            <label class="opt">
+              <input type="checkbox" name="entrega[]" value="Trechos brutos, sem edição">
+              <span class="opt-text">Trechos brutos, sem edição</span>
+              <svg class="opt-tick" aria-hidden="true"><use href="#i-arrow"></use></svg>
+            </label>
+            <label class="opt">
+              <input type="checkbox" name="entrega[]" value="Ainda não sei, me ajuda a decidir">
+              <span class="opt-text">Ainda não sei, me ajuda a decidir</span>
+              <svg class="opt-tick" aria-hidden="true"><use href="#i-arrow"></use></svg>
+            </label>
+          </div>
+        </fieldset>
+        <div class="quiz-actions">
+          <button class="btn ghost sm" type="button" data-back="">Voltar</button>
+          <button class="btn sm" type="button" data-next="">Continuar</button>
+        </div>
+      </section>
+      <section class="quiz-screen" data-screen="q23" data-question="portfolio">
+        <fieldset class="quiz-fs">
+          <legend class="quiz-legend">
+            <span class="label pink" data-step-label=""></span>
+            <span class="t-h2">Posso usar trechos no meu portfólio e nas redes?</span><span class="quiz-help">Você decide. Isso não muda o preço nem o que você recebe.</span>
+          </legend>
+          <div class="quiz-options">
+            <label class="opt">
+              <input type="radio" name="portfolio" value="Sim, pode usar à vontade">
+              <span class="opt-text">Sim, pode usar à vontade</span>
+              <svg class="opt-tick" aria-hidden="true"><use href="#i-arrow"></use></svg>
+            </label>
+            <label class="opt">
+              <input type="radio" name="portfolio" value="Sim, mas sem mostrar o rosto das pessoas">
+              <span class="opt-text">Sim, mas sem mostrar o rosto das pessoas</span>
+              <svg class="opt-tick" aria-hidden="true"><use href="#i-arrow"></use></svg>
+            </label>
+            <label class="opt">
+              <input type="radio" name="portfolio" value="Prefiro que não">
+              <span class="opt-text">Prefiro que não</span>
+              <svg class="opt-tick" aria-hidden="true"><use href="#i-arrow"></use></svg>
+            </label>
+          </div>
+        </fieldset>
+        <div class="quiz-actions">
+          <button class="btn ghost sm" type="button" data-back="">Voltar</button>
+          <button class="btn sm" type="button" data-next="">Continuar</button>
+        </div>
+      </section>
+      <section class="quiz-screen" data-screen="q24" data-question="investimento">
+        <fieldset class="quiz-fs">
+          <legend class="quiz-legend">
+            <span class="label pink" data-step-label=""></span>
+            <span class="t-h2">Quanto pretende investir?</span><span class="quiz-help">Não é proposta fechada. Serve para eu desenhar algo do tamanho do seu bolso.</span>
           </legend>
           <div class="quiz-options">
             <label class="opt">
@@ -908,17 +1206,17 @@
 </div>
 
 <div class="field">
-  <label for="f-instagram">Instagram</label><p class="hint" id="f-instagram-hint">Para marcar você nas publicações.</p>
+  <label for="f-instagram">Instagram</label><p class="hint" id="f-instagram-hint">Para eu marcar você nas publicações.</p>
   <input type="text" id="f-instagram" name="instagram" aria-describedby="&quot;f-instagram-hint&quot;" placeholder="@seuperfil">
 </div>
 
 <div class="field full">
-  <label for="f-referencias">Tem alguma referência?</label><p class="hint" id="f-referencias-hint">Opcional.</p>
-  <input type="text" id="f-referencias" name="referencias" aria-describedby="&quot;f-referencias-hint&quot;" placeholder="Cole o link de um vídeo que você gostou">
+  <label for="f-referencias">Viu algum vídeo que te fez pensar “quero assim”?</label><p class="hint" id="f-referencias-hint">Opcional, mas é o que mais ajuda a acertar o seu gosto.</p>
+  <input type="text" id="f-referencias" name="referencias" aria-describedby="&quot;f-referencias-hint&quot;" placeholder="Cole o link aqui — pode ser mais de um">
 </div>
 
 <div class="field full">
-  <label for="f-detalhes">Algum pedido especial?</label><p class="hint" id="f-detalhes-hint">Opcional. Pessoa ou detalhe em destaque, música específica, qualquer coisa que ajude.</p>
+  <label for="f-detalhes">Mais alguma coisa que eu precise saber?</label><p class="hint" id="f-detalhes-hint">Opcional. Qualquer detalhe que ajude a planejar o dia.</p>
   <textarea id="f-detalhes" name="detalhes" rows="4" aria-describedby="&quot;f-detalhes-hint&quot;" placeholder="Pode escrever à vontade — ou deixar em branco."></textarea>
 </div>
 
